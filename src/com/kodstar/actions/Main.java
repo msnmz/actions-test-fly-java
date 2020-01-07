@@ -1,0 +1,11 @@
+package com.kodstar.actions;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(sum(5, 10));
+    }
+
+    public static int sum (int x, int y) {
+        return 0;
+    }
+}
