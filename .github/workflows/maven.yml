@@ -20,7 +20,8 @@ jobs:
         git branch
         echo ${{ github }}
         git remote -v
-        git remote set-url --push pirvate https://msnmz:$GITHUB_TOKEN@github.com/msnmz-actions-private-tests-java
+        git remote add private https://github.com/msnmz/msnmz-actions-private-tests-java.git
+        git remote set-url --push private https://msnmz:$GITHUB_TOKEN@github.com/msnmz-actions-private-tests-java
     - name: Build with Maven
       run: mvn -B package --file pom.xml
     - name: Test with Maven
