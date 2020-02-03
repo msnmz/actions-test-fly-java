@@ -16,7 +16,12 @@ jobs:
     - name: Clean with Maven
       run: mvn clean
     - name: Log git info
-      run: git branch
+      run: |
+        git branch
+        echo git branch
+        echo ${{ env.GITHUB_REF_SLUG }}
+        echo ${{ env.GITHUB_HEAD_REF_SLUG }}
+        echo ${{ env.GITHUB_BASE_REF_SLUG }}
     - name: Build with Maven
       run: mvn -B package --file pom.xml
     - name: Test with Maven
