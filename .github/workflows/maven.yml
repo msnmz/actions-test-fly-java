@@ -22,7 +22,9 @@ jobs:
         git remote -v
         git remote add private https://github.com/msnmz/msnmz-actions-private-tests-java.git
         git remote set-url --push private https://msnmz:$GITHUB_TOKEN@github.com/msnmz-actions-private-tests-java
-        git push -u private ${BRANCHNAME}
+        git remote -v
+        git checkout ${BRANCHNAME}
+        git push -u private HEAD:${BRANCHNAME}
       env:
         BRANCHNAME: ${{ github.event.pull_request.head.ref }}
     - name: Build with Maven
