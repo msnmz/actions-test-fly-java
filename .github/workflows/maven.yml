@@ -18,11 +18,8 @@ jobs:
     - name: Log git info
       run: |
         git branch
-        echo git branch
         echo ${{ github }}
-        echo ${{ GITHUB_REF}}
-        echo ${{ GITHUB_HEAD_REF }}
-        echo ${{ GITHUB_BASE_REF }}
+        git remote -v
     - name: Build with Maven
       run: mvn -B package --file pom.xml
     - name: Test with Maven
