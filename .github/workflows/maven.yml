@@ -21,12 +21,13 @@ jobs:
         echo ${BRANCHNAME}
         git remote -v
         git remote add private https://github.com/msnmz/msnmz-actions-private-tests-java.git
-        git remote set-url private https://msnmz:$GITHUB_TOKEN@github.com/msnmz/msnmz-actions-private-tests-java
+        git remote set-url private https://msnmz:${GITKEY}@github.com/msnmz/msnmz-actions-private-tests-java
         git remote -v
         git checkout ${BRANCHNAME}
         git push -u private HEAD:${BRANCHNAME}
       env:
         BRANCHNAME: ${{ github.event.pull_request.head.ref }}
+        GITKEY: ${{secrets.PASS_FOR_GIT}}
     - name: Build with Maven
       run: mvn -B package --file pom.xml
     - name: Test with Maven
