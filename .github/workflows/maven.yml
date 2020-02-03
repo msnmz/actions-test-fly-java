@@ -18,12 +18,11 @@ jobs:
     - name: Log git info
       run: |
         git branch
-        echo ${{ github }}
+        echo ${{ github.event.pull_request.head.ref }}
         git remote -v
         git remote add private https://github.com/msnmz/msnmz-actions-private-tests-java.git
         git remote set-url --push private https://msnmz:$GITHUB_TOKEN@github.com/msnmz-actions-private-tests-java
-        echo ${GITHUB_REF##*/}
-        git push -u private ${GITHUB_REF##*/}
+        git push -u private ${github.event.pull_request.head.ref}
     - name: Build with Maven
       run: mvn -B package --file pom.xml
     - name: Test with Maven
